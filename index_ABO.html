@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Compatibilidad ABO y Rh</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#eef2f7;
+padding:40px;
+text-align:center;
+}
+
+.contenedor{
+background:white;
+width:500px;
+margin:auto;
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.15);
+}
+
+h1{
+color:#b30000;
+}
+
+select{
+width:220px;
+padding:12px;
+font-size:18px;
+border-radius:8px;
+}
+
+button{
+padding:12px 20px;
+margin:10px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+.consultar{
+background:#0078d7;
+color:white;
+}
+
+.limpiar{
+background:#888;
+color:white;
+}
+
+#resultado{
+margin-top:25px;
+padding:20px;
+border-radius:10px;
+background:#f8f8f8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<h1>🩸 Compatibilidad ABO y Rh</h1>
+
+<p>Seleccione su grupo sanguíneo</p>
+
+<select id="grupo">
+
+<option value="">Seleccione...</option>
+
+<option>O-</option>
+<option>O+</option>
+
+<option>A-</option>
+<option>A+</option>
+
+<option>B-</option>
+<option>B+</option>
+
+<option>AB-</option>
+<option>AB+</option>
+
+</select>
+
+<br><br>
+
+<button class="consultar"
+onclick="consultar()">
+Consultar
+</button>
+
+<button class="limpiar"
+onclick="limpiar()">
+Limpiar
+</button>
+
+<div id="resultado">
+
+Seleccione un grupo sanguíneo.
+
+</div>
+
+</div>
+
+<script>
+
+function consultar(){
+
+let grupo =
+document.getElementById("grupo").value;
+
+let donar="";
+let recibir="";
+
+switch(grupo){
+
+case "O-":
+donar="Todos los grupos";
+recibir="O-";
+break;
+
+case "O+":
+donar="O+, A+, B+, AB+";
+recibir="O-, O+";
+break;
+
+case "A-":
+donar="A-, A+, AB-, AB+";
+recibir="A-, O-";
+break;
+
+case "A+":
+donar="A+, AB+";
+recibir="A+, A-, O+, O-";
+break;
+
+case "B-":
+donar="B-, B+, AB-, AB+";
+recibir="B-, O-";
+break;
+
+case "B+":
+donar="B+, AB+";
+recibir="B+, B-, O+, O-";
+break;
+
+case "AB-":
+donar="AB-, AB+";
+recibir="AB-, A-, B-, O-";
+break;
+
+case "AB+":
+donar="AB+";
+recibir="Todos los grupos";
+break;
+
+default:
+document.getElementById("resultado").innerHTML=
+"Seleccione un grupo.";
+return;
+}
+
+let explicacion="";
+
+if(grupo=="O-")
+explicacion=
+"Es el donante universal de glóbulos rojos.";
+
+else if(grupo=="AB+")
+explicacion=
+"Es el receptor universal de glóbulos rojos.";
+
+else
+explicacion=
+"Su compatibilidad depende de los antígenos ABO y del factor Rh.";
+
+document.getElementById("resultado").innerHTML=
+
+"<h2>🩸 Grupo " + grupo + "</h2>" +
+
+"<p><b>Puede donar a:</b><br>" +
+donar +
+"</p>" +
+
+"<p><b>Puede recibir de:</b><br>" +
+recibir +
+"</p>" +
+
+"<hr>" +
+
+"<p>" +
+explicacion +
+"</p>";
+
+}
+
+function limpiar(){
+
+document.getElementById("grupo").value="";
+
+document.getElementById("resultado").innerHTML=
+"Seleccione un grupo sanguíneo.";
+
+}
+
+</script>
+
+</body>
+</html>
