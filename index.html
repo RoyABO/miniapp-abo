@@ -6,24 +6,34 @@
 <title>Compatibilidad ABO y Rh</title>
 <link rel="manifest" href="manifest.json">
 <style>
-<script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
-}
-</script>
+
 body{
 font-family:Arial;
-background:#eef2f7;
-padding:40px;
+background:red;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+min-height:100vh;
+
+margin:0;
 text-align:center;
 }
 
 .contenedor{
 background:white;
-width:500px;
-margin:auto;
-padding:30px;
+
+width:90%;
+max-width:900px;
+min-height:500px;
+
+border: 5px solid red;
+
+padding:40px;
+
 border-radius:20px;
+
 box-shadow:0 0 20px rgba(0,0,0,0.15);
 }
 
@@ -71,7 +81,7 @@ background:#f8f8f8;
 
 <div class="contenedor">
 
-<h1>🩸 Compatibilidad ABO y Rh</h1>
+<h1>🚨 PRUEBA ROY 123 🚨</h1>
 
 <p>Seleccione su grupo sanguíneo</p>
 
@@ -214,6 +224,9 @@ document.getElementById("resultado").innerHTML=
 
 }
 
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
 </script>
 
 </body>
