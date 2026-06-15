@@ -4,9 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Compatibilidad ABO y Rh</title>
-
+<link rel="manifest" href="manifest.json">
 <style>
-
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
 body{
 font-family:Arial;
 background:#eef2f7;

@@ -1,0 +1,16 @@
+{
+  "name": "Compatibilidad ABO",
+  "short_name": "ABO",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#b30000",
+  "description": "Calculadora de compatibilidad sanguínea ABO y Rh",
+  "icons": [
+    {
+      "src": "icono.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
