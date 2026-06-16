@@ -1,4 +1,4 @@
-const CACHE_NAME = "abo-cache-v5";
+const CACHE_NAME = "abo-cache-v6";
 
 const archivos = [
   "/",
@@ -8,15 +8,33 @@ const archivos = [
 ];
 
 self.addEventListener("install", (evento) => {
+  self.skipWaiting();
+
   evento.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => cache.addAll(archivos))
   );
 });
 
+self.addEventListener("activate", (evento) => {
+  evento.waitUntil(
+    caches.keys().then((nombres) => {
+      return Promise.all(
+        nombres.map((nombre) => {
+          if (nombre !== CACHE_NAME) {
+            return caches.delete(nombre);
+          }
+        })
+      );
+    })
+  );
+
+  return self.clients.claim();
+});
+
 self.addEventListener("fetch", (evento) => {
   evento.respondWith(
-    caches.match(evento.request)
-      .then((respuesta) => respuesta || fetch(evento.request))
+    fetch(evento.request)
+      .catch(() => caches.match(evento.request))
   );
 });
