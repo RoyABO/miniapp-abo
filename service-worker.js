@@ -1,4 +1,4 @@
-const CACHE_NAME = "abo-cache-v4";
+const CACHE_NAME = "abo-cache-v5";
 
 const archivos = [
   "/",
